@@ -1,17 +1,17 @@
 {
-    "name": "github-copilot-for-msa",
+    "name": "genai-copilot-for-msa",
     "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-jammy",
-    "workspaceFolder": "/workspaces/github-copilot-for-msa",
-    "onCreateCommand": "bash ./.devcontainer/on-setup.sh",
+    "workspaceFolder": "/workspaces/genai-database-explorer",
+    "onCreateCommand": "tr -d '\\r' < .devcontainer/on-setup.sh > /tmp/on-setup.sh && mv /tmp/on-setup.sh .devcontainer/on-setup.sh && chmod +x .devcontainer/on-setup.sh && bash .devcontainer/on-setup.sh",
     // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
         "ghcr.io/devcontainers/features/azure-cli:1": {
             "version": "latest"
         },
         "ghcr.io/devcontainers/features/dotnet:2": {
-            "version": "8.0",
-            "dotnetRuntimeVersions": "8.0",
-            "aspNetCoreRuntimeVersions": "8.0"
+            "version": "9.0",
+            "dotnetRuntimeVersions": "9.0",
+            "aspNetCoreRuntimeVersions": "9.0"
         },
         "ghcr.io/devcontainers/features/powershell:1": {
             "version": "latest"
@@ -74,14 +74,27 @@
                 "GitHub.copilot",
                 "GitHub.copilot-chat",
                 "GitHub.vscode-github-actions",
-                "GitHub.vscode-pull-request-github"
+                "GitHub.vscode-pull-request-github",
+                
+                // AI and Semantic Kernel
+                "ms-semantic-kernel.semantic-kernel",
+                "ms-toolsai.jupyter",
+                "ms-python.python",
+                
+                // Development Tools
+                "ms-vscode.powershell",
+                "ms-vscode-remote.remote-containers",
+                "redhat.vscode-yaml",
+                "ms-vscode.vscode-json",
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode",
+                "ms-vsliveshare.vsliveshare"
             ]
         }
     },
     
     // Add additional configuration
     "remoteUser": "vscode",
-    "postCreateCommand": "dotnet restore",
     "forwardPorts": [5000, 5001, 7071],
     "portsAttributes": {
         "5000": {

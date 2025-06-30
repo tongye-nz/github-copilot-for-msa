@@ -1,33 +1,67 @@
 #!/bin/bash
 
-# Configure HTTPS development certificates for .NET
-sudo -E dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM
-sudo update-ca-certificates
+echo "🔧 Starting DevContainer setup..."
+
+# Configure HTTPS development certificates for .NET (optional, continue on failure)
+echo "📜 Configuring HTTPS certificates..."
+if sudo mkdir -p /usr/local/share/ca-certificates/aspnet; then
+    sudo -E dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM || echo "⚠️  HTTPS certificate configuration failed (optional)"
+    sudo update-ca-certificates || echo "⚠️  Certificate update failed (optional)"
+else
+    echo "⚠️  Could not create certificate directory (optional)"
+fi
 
 # Install .NET workloads for Azure development
-dotnet workload update
-dotnet workload install aspire
+echo "📦 Installing .NET workloads..."
+dotnet workload update || echo "⚠️  Workload update failed, continuing..."
+dotnet workload install aspire || echo "⚠️  Aspire workload installation failed, continuing..."
 
-# Install global .NET tools
-dotnet tool install -g Microsoft.dotnet-httprepl
-dotnet tool install -g dotnet-ef
-dotnet tool install -g Microsoft.Web.LibraryManager.Cli
-dotnet tool install -g dotnet-outdated-tool
-dotnet tool install -g dotnet-format
+# Install global .NET tools (continue on individual failures)
+echo "🔨 Installing .NET global tools..."
+# Add retries and better error handling for tool installations
+install_dotnet_tool() {
+    local tool_name=$1
+    local package_name=$2
+    echo "Installing $tool_name..."
+    for i in {1..3}; do
+        if dotnet tool install -g "$package_name"; then
+            echo "✅ $tool_name installed successfully"
+            return 0
+        else
+            echo "⚠️  Attempt $i failed for $tool_name, retrying in 5 seconds..."
+            sleep 5
+        fi
+    done
+    echo "❌ Failed to install $tool_name after 3 attempts"
+    return 1
+}
+
+# Install tools with retries
+install_dotnet_tool "HttpRepl" "Microsoft.dotnet-httprepl" || true
+install_dotnet_tool "Entity Framework Core CLI" "dotnet-ef" || true
+install_dotnet_tool "Library Manager CLI" "Microsoft.Web.LibraryManager.Cli" || true
+install_dotnet_tool "Outdated Tool" "dotnet-outdated-tool" || true
+install_dotnet_tool "Format Tool" "dotnet-format" || true
 
 # Update Azure CLI and install extensions
-az extension add --name azure-devops --upgrade
-az extension add --name application-insights --upgrade
-az extension add --name resource-graph --upgrade
+echo "☁️  Configuring Azure CLI extensions..."
+az extension add --name azure-devops 2>/dev/null || echo "⚠️  azure-devops extension failed"
+az extension add --name application-insights 2>/dev/null || echo "⚠️  application-insights extension failed"
+az extension add --name resource-graph 2>/dev/null || echo "⚠️  resource-graph extension failed"
 
 # Install Azure Developer CLI (azd) if not already present
+echo "🌐 Checking Azure Developer CLI..."
 if ! command -v azd &> /dev/null; then
-    curl -fsSL https://aka.ms/install-azd.sh | bash
+    echo "Installing Azure Developer CLI..."
+    curl -fsSL https://aka.ms/install-azd.sh | bash || echo "⚠️  azd installation failed"
+else
+    echo "Azure Developer CLI already installed"
 fi
 
 # Configure Git (if not already configured)
-git config --global init.defaultBranch main
-git config --global pull.rebase false
+echo "🔧 Configuring Git..."
+git config --global init.defaultBranch main || echo "⚠️  Git config failed"
+git config --global pull.rebase false || echo "⚠️  Git config failed"
 
 echo "✅ DevContainer setup completed successfully!"
-echo "🚀 Ready for .NET 8 + C# 13 development with Azure tooling"
+echo "🚀 Ready for .NET 9 + C# 14 development with Azure tooling"
