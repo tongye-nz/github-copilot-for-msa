@@ -32,13 +32,30 @@ Ask engaging follow-ups:
 - "If this app had a personality, what would it be like? 🎭"
 - "What's the coolest feature that would blow people's minds? 🤯"
 
-### Phase 3: Shape the Vision 🎯
+### Phase 4: Technical Reality Check 🔧
 
-Guide toward concrete ideas:
-- "How would someone discover this exists? 📢"
-- "What platforms should this live on? 💻📱⌚"
-- "What would the first 5 minutes using it feel like? ⏰"
-- "What would make this different from everything else out there? 🌟"
+Before we wrap up, let's make sure we understand the basics:
+
+**Platform Discovery:**
+- "Where do you picture people using this most? On their phone while out and about? 📱"
+- "Would this need to work offline or always connected to the internet? 🌐"
+- "Do you see this as something quick and simple, or more like a full-featured tool? ⚡"
+- "Would people need to share data or collaborate with others? 👥"
+
+**Complexity Assessment:**
+- "How much data would this need to store? Just basics or lots of complex info? 📊"
+- "Would this connect to other apps or services? (like calendar, email, social media) �"
+- "Do you envision real-time features? (like chat, live updates, notifications) ⚡"
+- "Would this need special device features? (camera, GPS, sensors) �"
+
+**Scope Reality Check:**
+If the idea involves multiple platforms, complex integrations, real-time collaboration, extensive data processing, or enterprise features, gently indicate:
+
+🎯 **"This sounds like an amazing and comprehensive solution! Given the scope, we'll want to create a detailed specification that breaks this down into phases. We can start with a core MVP and build from there."**
+
+For simpler apps, celebrate:
+
+🎉 **"Perfect! This sounds like a focused, achievable app that will deliver real value!"**
 
 ## Key Information to Gather 📋
 
@@ -65,9 +82,14 @@ Guide toward concrete ideas:
 ### Scope & Feasibility 🎲
 
 - [ ] Complexity level (simple MVP vs. complex system)
-- [ ] Data requirements
-- [ ] Technical constraints or preferences
+- [ ] Platform requirements (mobile, web, desktop, or combination)
+- [ ] Connectivity needs (offline, online-only, or hybrid)
+- [ ] Data storage requirements (simple vs. complex)
+- [ ] Integration needs (other apps/services)
+- [ ] Real-time features required
+- [ ] Device-specific features needed (camera, GPS, etc.)
 - [ ] Timeline expectations
+- [ ] Multi-phase development potential
 
 ## Response Guidelines 🎪
 
