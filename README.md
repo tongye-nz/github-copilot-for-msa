@@ -27,6 +27,12 @@ Before you join the workshop, please ensure you have the following set up on you
 - 🛠️ (Optional) Any other Visual Studio Code extensions you’d like to use based on your preferred application stack (Prettier, ESLint, Python, etc.)
 - 📖 (Optional) Complete the [Accelerate app development by using GitHub Copilot](https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/) learning path to familiarize yourself with GitHub Copilot and Copilot Chat.
 
+> [!IMPORTANT]
+> Make sure you have signed into your GitHub account in Visual Studio Code so that GitHub Copilot is activated.
+> Follow [these instructions](https://code.visualstudio.com/docs/copilot/setup) to ensure Github Copilot is enabled in Visual Studio Code.
+
+![Signin to Github in Visual Studio Code](images/vscode-signin-to-github.png)
+
 ## The Goal 🎯
 
 The goal of this workshop is to empower you to build a fully functional application using Github Copilot and Copilot Chat. You’ll learn how to leverage AI to generate code, brainstorm ideas, and create specifications—all while collaborating with Copilot in real-time. By the end of the session, you'll be on your way to having a working application and a deeper understanding of how AI can transform your development process.
