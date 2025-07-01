@@ -46,7 +46,8 @@ The key to using AI to create production ready applications is to provide ground
    - Building your own AI centric engineering process
 
 2. **Agent Mode & Custom Chat Modes** (30 mins)
-   - Clone this repository using GitHub CLI `gh repo clone PlagueHO/github-copilot-for-msa`
+   - Fork this repository to your GitHub account
+   - Clone your fork of this repository using GitHub CLI `gh repo clone <your-username>/github-copilot-for-msa`
    - Come up with your app idea with the `simple_app_idea_generator` chat mode
    - Discusss your idea with `mentor` chat mode and refine it, including deciding on the technology stack
 
