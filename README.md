@@ -16,9 +16,14 @@ So buckle up, bring your ideas, and get ready to experience the future of softwa
 Before you join the workshop, please ensure you have the following set up on your machine:
 
 - ✅ [GitHub account](https://github.com/) 🐙
+- ✅ [Sign-up for GitHub Copilot Free](https://github.com/settings/copilot/features)
+    ![GitHub Copilot Free Sign-up](images/github-copilot-free-signup.png)
+- ✅ [Git installed](https://git-scm.com/)
+- ✅ [GitHub CLI installed](https://cli.github.com/) 🛠️
 - ✅ [Visual Studio Code installed](https://code.visualstudio.com/) 💻
 - ✅ [GitHub Copilot Extension installed in Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) 🤖
 - ✅ [GitHub Copilot Chat extension installed in Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) 💬
+    ![GitHub Copilot Chat Extensions](images/vscode-github-copilot-extensions.png)
 - 🛠️ (Optional) Any other Visual Studio Code extensions you’d like to use based on your preferred application stack (Prettier, ESLint, Python, etc.)
 - 📖 (Optional) Complete the [Accelerate app development by using GitHub Copilot](https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/) learning path to familiarize yourself with GitHub Copilot and Copilot Chat.
 
@@ -35,6 +40,7 @@ The key to using AI to create production ready applications is to provide ground
    - Rethinking engineering processes with AI
 
 2. **Agent Mode & Custom Chat Modes** (30 mins)
+   - Clone this repository using GitHub CLI `gh repo clone PlagueHO/github-copilot-for-msa`
    - Come up with your app idea with the `simple_app_idea_generator` chat mode
    - Review your idea with `mentor` chat mode and refine it, including deciding on the technology stack
 
@@ -53,8 +59,8 @@ The key to using AI to create production ready applications is to provide ground
 ## Resources 📚
 
 - [GitHub Copilot Assets Library](https://github.com/PlagueHO/github-copilot-assets-library)
-- [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/chat)
-- [Visual Studio Code Documentation](https://code.visualstudio.com/docs)
-- [Microsoft Learn: Accelerate app development by using GitHub Copilot](https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/)
-- [GitHub Copilot Custom Prompt Files](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental)
-- [GitHub Copilot Custom Chat Modes](https://code.visualstudio.com/docs/copilot/chat/chat-modes#_custom-chat-modes)
+- [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/chat) 📖
+- [Visual Studio Code Documentation](https://code.visualstudio.com/docs) 📖
+- [Microsoft Learn: Accelerate app development by using GitHub Copilot](https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/) 📖
+- [GitHub Copilot Custom Prompt Files](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental) 📖
+- [GitHub Copilot Custom Chat Modes](https://code.visualstudio.com/docs/copilot/chat/chat-modes#_custom-chat-modes) 📖
