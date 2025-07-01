@@ -35,14 +35,14 @@ The key to using AI to create production ready applications is to provide ground
 
 ## Workshop Agenda 📅
 
-1. **Introduction to AI in Software Development** (10 mins)
+1. **Reimagining Development with Agentic DevOps** (10 mins)
    - GitHub Copilot overview
-   - Rethinking engineering processes with AI
+   - Building your own AI centric engineering process
 
 2. **Agent Mode & Custom Chat Modes** (30 mins)
    - Clone this repository using GitHub CLI `gh repo clone PlagueHO/github-copilot-for-msa`
    - Come up with your app idea with the `simple_app_idea_generator` chat mode
-   - Review your idea with `mentor` chat mode and refine it, including deciding on the technology stack
+   - Discusss your idea with `mentor` chat mode and refine it, including deciding on the technology stack
 
 3. **Prompt Files** (30 mins)
    - Create your app specfication with the `/create_spec` custom prompt file
