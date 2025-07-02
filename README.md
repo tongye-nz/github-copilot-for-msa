@@ -45,18 +45,18 @@ The key to using AI to create production ready applications is to provide ground
    - GitHub Copilot overview
    - Building your own AI centric engineering process
 
-2. **Agent Mode & Custom Chat Modes** (30 mins)
+2. **Agent Mode & Custom Chat Modes** (30 mins) - [📖 **Detailed Instructions**](workshop-step-2-agent-mode-and-custom-chat-modes.md)
    - Fork this repository to your GitHub account
    - Clone your fork of this repository using GitHub CLI `gh repo clone <your-username>/github-copilot-for-msa`
    - Come up with your app idea with the `simple_app_idea_generator` chat mode
    - Discusss your idea with `mentor` chat mode and refine it, including deciding on the technology stack
 
-3. **Prompt Files** (30 mins)
+3. **Prompt Files** (30 mins) - [📖 **Detailed Instructions**](workshop-step-3-prompt-files.md)
    - Create your app specfication with the `/create_spec` custom prompt file
    - Create your implementation plan using a custom prompt file `/create_plan`.
    - Run a last review of your plan and specification with the `mentor` chat mode
 
-4. **Build your application** (15 mins)
+4. **Build your application** (15 mins) - [📖 **Detailed Instructions**](workshop-step-4-build-your-application.md)
    - Ask Copilot in Agent mode to build your application from the Specification and Implementation Plan you created.
 
 5. **Next Steps** (5 mins)
