@@ -6,7 +6,7 @@ Welcome to the future of software development! This opening session sets the sta
 
 - ✅ Understand the fundamentals of GitHub Copilot and AI-assisted development
 - ✅ Learn about Agentic DevOps and how AI transforms the development process
-- ✅ Prepare mentally for the shift from traditional coding to AI collaboration
+- ✅ Prepare mentally for the shift from traditional coding to Agentic AI collaboration
 - ✅ Get excited about building your own AI-centric engineering process
 
 ## Session Overview 📋
@@ -17,12 +17,13 @@ This step is primarily a **facilitator-led presentation** covering:
 
 **Key topics covered in presentation:**
 
-- What is GitHub Copilot and how does it work?
-- Evolution from code completion to intelligent AI pair programming
-- Real-world impact on developer productivity and creativity
-- Introduction to Agent Mode and advanced features
-
-> **📸 PRESENTATION SLIDE**: GitHub Copilot overview with key statistics and capabilities
+- Goals of the workshop and what you'll learn
+- The increasing complexity of Software Development
+- Introduction to Agentic DevOps
+- What we are going to build together
+- What is GitHub Copilot & GitHub Copilot Chat and how does it work?
+- The importance of context - Context Engineering
+- Customizing Copilot with to 
 
 ### Part 2: Agentic DevOps Transformation (5 minutes)
 
