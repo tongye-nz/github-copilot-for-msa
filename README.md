@@ -41,7 +41,7 @@ The key to using AI to create production ready applications is to provide ground
 
 ## Workshop Agenda 📅
 
-1. **Reimagining Development with Agentic DevOps** (10 mins)
+1. **Reimagining Development with Agentic DevOps** (10 mins) - [📖 **Detailed Instructions**](workshop-step-1-reimagining-development-with-agentic-devops.md)
    - GitHub Copilot overview
    - Building your own AI centric engineering process
 
@@ -59,7 +59,7 @@ The key to using AI to create production ready applications is to provide ground
 4. **Build your application** (15 mins) - [📖 **Detailed Instructions**](workshop-step-4-build-your-application.md)
    - Ask Copilot in Agent mode to build your application from the Specification and Implementation Plan you created.
 
-5. **Next Steps** (5 mins)
+5. **Next Steps** (5 mins) - [📖 **Detailed Instructions**](workshop-step-5-next-steps.md)
     - AI driven development will be a key part of your future career.
     - It is critical to keep developing your AI skills and knowledge and to lead the way in your future teams.
 
