@@ -1,14 +1,21 @@
-# Workshop Step**Benefits:**
+# Workshop Step 3: Prompt Files (30 minutes) 📝✨
 
-- **Consistency## Part 1: Available Prompt Files (5 minutes) 📖
+Learn to create structured specifications and implementation plans using GitHub Copilot's prompt files.
 
-### Application Specification Generator (`/create_spec`)
+## Learning Objectives 🎯
 
-**Produces:** Feature requirements, technical architecture, UX guidelines, database schema, API specs, security considerations
+- ✅ Understand prompt files and their power for structured AI guidance
+- ✅ Create comprehensive app specification using `/create_spec`
+- ✅ Develop detailed implementation plan using `/create_plan`
+- ✅ Conduct final review with mentor chat mode
 
-### Implementation Plan Generator (`/create_plan`)
+## What Are Prompt Files 🤔
 
-**Produces:** Project timeline, development phases, file structure, setup instructions, testing strategy, deployment considerationsry specification follows the same high-quality structure
+**Prompt files** = Specialized, reusable templates that provide structured AI guidance for specific tasks.
+
+**Benefits:**
+
+- **Consistency**: Every specification follows the same high-quality structure
 - **Completeness**: Nothing important gets missed
 - **Efficiency**: Faster than manual documentation
 - **Professional Quality**: Industry-standard outputs
@@ -22,44 +29,13 @@
 
 ## Part 1: Available Prompt Files (5 minutes) 📖
 
-### `/create_spec` - Application Specification Generator
+**Application Specification Generator (`/create_spec`)**
 
-**Produces:** Feature requirements, technical architecture, UX guidelines, database schema, API specs, security considerations
+Produces: Feature requirements, technical architecture, UX guidelines, database schema, API specs, security considerations
 
-### `/create_plan` - Implementation Plan Generator30 minutes) 📝✨
+**Implementation Plan Generator (`/create_plan`)**
 
-Learn to create structured specifications and implementation plans using GitHub Copilot's prompt files.
-
-## Learning Objectives 🎯
-
-- ✅ Understand prompt files and their power for structured AI guidance
-- ✅ Create comprehensive app specification using `/create_spec`
-- ✅ Develop detailed implementation plan using `/create_plan`
-- ✅ Conduct final review with mentor chat mode
-
-## What Are Prompt Files? 🤔
-
-**Prompt files** = Specialized, reusable templates that provide structured AI guidance for specific tasks.
-
-**Benefits:**
-- **Consistency**: Every specification follows the same high-quality structure
-- **Completeness**: Nothing important gets missed
-- **Efficiency**: Faster than manual documentation
-- **Professional Quality**: Industry-standard outputs
-
-**How they work:**
-1. Invoke with forward slash (e.g., `/create_spec`)
-2. AI asks targeted questions about your project
-3. Generate comprehensive documentation based on answers
-4. Iterate and refine outputs as needed
-
-## Part 1: Available Prompt Files (5 minutes) �
-
-### `/create_spec` - Application Specification Generator
-**Produces:** Feature requirements, technical architecture, UX guidelines, database schema, API specs, security considerations
-
-### `/create_plan` - Implementation Plan Generator  
-**Produces:** Project timeline, development phases, file structure, setup instructions, testing strategy, deployment considerations
+Produces: Project timeline, development phases, file structure, setup instructions, testing strategy, deployment considerations
 
 > **📸 SCREENSHOT NEEDED**: Copilot Chat showing /create_spec command autocomplete
 
@@ -80,6 +56,7 @@ Learn to create structured specifications and implementation plans using GitHub 
 ### Step 2: Work Through the Questions (8 minutes)
 
 **Example interaction:**
+
 ```text
 You: /create_spec
 
@@ -92,6 +69,7 @@ Copilot: Excellent concept! Now let's dive deeper...
 ```
 
 **Key areas covered:**
+
 - App overview (purpose, audience, problem solved, unique value)
 - Feature requirements (MVP vs. future features, user interactions, data handling)  
 - Technical requirements (platforms, real-time needs, integrations, performance)
@@ -101,6 +79,7 @@ Copilot: Excellent concept! Now let's dive deeper...
 ### Step 3: Review and Refine (5 minutes)
 
 **Ask for clarifications:**
+
 ```text
 Can you expand on the privacy and security considerations section?
 Can you add more detail about the smart glasses integration?
@@ -108,6 +87,7 @@ What about offline capabilities?
 ```
 
 **Save your work:**
+
 - Copy output to `app-specification.md`
 - Commit to your repository
 
@@ -116,6 +96,7 @@ What about offline capabilities?
 ### Step 1: Generate Implementation Plan (3 minutes)
 
 **Start the planning process:**
+
 ```text
 /create_plan
 
@@ -128,6 +109,7 @@ please create a detailed implementation plan.
 ### Step 2: Work Through Planning Questions (5 minutes)
 
 **Key areas covered:**
+
 - **Project Structure**: Codebase organization, files/folders, component structure
 - **Development Phases**: Build order (MVP first), feature prioritization, key milestones  
 - **Technical Setup**: Development environment, dependencies, project configuration
@@ -136,6 +118,7 @@ please create a detailed implementation plan.
 ### Step 3: Refine the Plan (2 minutes)
 
 **Ask for specific clarifications:**
+
 ```text
 Can you break down Phase 1 into smaller, daily tasks?
 What specific libraries should I use for face recognition?
@@ -143,6 +126,7 @@ How should I handle the smart glasses API integration?
 ```
 
 **Save your work:**
+
 - Copy to `implementation-plan.md`
 - Commit to repository
 
@@ -151,6 +135,7 @@ How should I handle the smart glasses API integration?
 ## Part 4: Final Review with Mentor (5 minutes) 👨‍🏫
 
 **Engage mentor for comprehensive review:**
+
 ```text
 @mentor
 
@@ -166,6 +151,7 @@ Can you review both documents and provide feedback on:
 ```
 
 **Expected mentor feedback:**
+
 - ✅ Validate technical feasibility
 - ✅ Identify potential simplifications
 - ✅ Suggest alternative approaches if needed

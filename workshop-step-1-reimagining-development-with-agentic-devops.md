@@ -6,14 +6,14 @@ Welcome to the future of software development! This opening session sets the sta
 
 - ✅ Understand the fundamentals of GitHub Copilot and AI-assisted development
 - ✅ Learn about Agentic DevOps and how AI transforms the development process
-- ✅ Prepare mentally for the shift from traditional coding to Agentic AI collaboration
-- ✅ Get excited about building your own AI-centric engineering process
+- ✅ Prepare for the shift from traditional coding to Agentic AI collaboration
+- ✅ Building your own AI-centric engineering process
 
 ## Session Overview 📋
 
 This step is primarily a **facilitator-led presentation** covering:
 
-### Part 1: GitHub Copilot Overview (5 minutes)
+### Part 1: GitHub Copilot Overview (15 minutes)
 
 **Key topics covered in presentation:**
 
@@ -23,55 +23,39 @@ This step is primarily a **facilitator-led presentation** covering:
 - What we are going to build together
 - What is GitHub Copilot & GitHub Copilot Chat and how does it work?
 - The importance of context - Context Engineering
-- Customizing Copilot with to 
-
-### Part 2: Agentic DevOps Transformation (5 minutes)
-
-**Key topics covered in presentation:**
-
-- Traditional development workflow vs. AI-augmented workflow
-- The role of AI as your development team member
-- How to build your own AI-centric engineering process
-- Best practices for human-AI collaboration in software development
+- Customizing Copilot to reimagine your development workflow
 
 > **📸 PRESENTATION SLIDE**: Before/After comparison of development workflows
-
-## Key Takeaways 💡
-
-**Traditional Development:**
-
-- Write every line of code manually
-- Debug issues line by line
-- Research solutions independently
-- Linear, time-intensive process
-
-**AI-Augmented Development:**
-
-- Direct AI to generate code based on specifications
-- Collaborate with AI for problem-solving
-- Leverage AI for research and best practices
-- Iterative, rapid prototyping approach
 
 ## Mental Model Shift 🧠
 
 **From:** Developer as code writer
 **To:** Developer as architect, project manager, and AI collaborator
 
-**Your new role:**
+**You will have access to an AI team of:**
 
+- 📋 **Product Manager**: Define product vision, features and requirements
 - 🏗️ **Architect**: Design the overall solution and approach
-- 📋 **Project Manager**: Guide the development process and priorities
-- 🤝 **AI Collaborator**: Communicate effectively with AI tools
+- **Developer**: Write code with AI assistance, focusing on high-level logic
+- **UX Designer**: Focus on user experience and interface design
+- 🛠️ **Process Owner**: Establish and maintain the development process
 - 🎯 **Quality Guardian**: Review, test, and refine AI-generated solutions
+- 🤝 **AI Collaborator**: Communicate effectively with AI tools
+- **Documenter**: Maintain clear documentation for AI and human understanding
+- **SRE**: Ensure reliability and performance of AI-assisted applications
+- **Security Champion**: Integrate security best practices into AI workflows
+- **Data Scientist**: Analyze data and provide insights for AI models
+- **DevOps Engineer**: Automate deployment and operations with AI tools
+- And more!
 
 ## What's Coming Next 🔄
 
 In the upcoming workshop steps, you'll experience this transformation firsthand:
 
-1. **Step 2**: Learn to collaborate with AI for idea generation and refinement
-2. **Step 3**: Use AI to create professional specifications and implementation plans
-3. **Step 4**: Watch AI build your entire application based on your guidance
-4. **Step 5**: Explore resources for continuing your AI development journey
+1. **Step 2**: [Agent Mode & Custom Chat Modes](workshop-step-2-agent-mode-and-custom-chat-modes.md)
+1. **Step 3**: [Prompt Files](workshop-step-3-prompt-files.md)
+1. **Step 4**: [Building your application with AI](workshop-step-4-build-your-application.md)
+1. **Step 5**: [Next Steps](workshop-step-5-next-steps.md)
 
 ## Questions for Reflection 🤔
 
