@@ -57,6 +57,7 @@ The key to using AI to create production ready applications is to provide ground
    - Run a last review of your plan and specification with the `mentor` chat mode
 
 4. **Build your application** (25 mins) - 📖 [**Detailed Instructions**](workshop-step-4-build-your-application.md)
+   - Use the `#new` Agent tool to scaffold your application
    - Ask Copilot in Agent mode to build your application from the Specification and Implementation Plan you created.
 
 5. **Next Steps** (5 mins) - 📖 [**Detailed Instructions**](workshop-step-5-next-steps.md)

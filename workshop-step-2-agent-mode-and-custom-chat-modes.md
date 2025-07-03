@@ -45,21 +45,21 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
    ![Create a Codespace](images/github-create-codespace.png)
 
 1. Wait for Codespace to initialize (this may take a few minutes)
-1. 
 
 ## Part 2: Understanding Agent Mode (5 minutes) 🕵️‍♂️
 
 **Agent Mode** = AI collaborative partner that can:
 
 - Take autonomous actions to solve complex problems
+- Use Model Context Protocol (MCP) to call tools and request information
 - Create and modify multiple files simultaneously
 - Follow multi-step workflows with context awareness
 
 ### Activating Agent Mode
 
-1. Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
-2. Type: "GitHub Copilot: Enable Agent Mode"
-3. Or click the agent icon in Copilot Chat panel
+1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Select **Agent** in the Copilot Chat panel
+1. Click the 
 
 > **📸 SCREENSHOT NEEDED**: Command Palette with Agent Mode option highlighted
 > **📸 SCREENSHOT NEEDED**: Agent Mode icon in Copilot Chat panel
