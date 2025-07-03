@@ -8,7 +8,7 @@ In this hands-on, high-energy lab, you’ll team up with GitHub Copilot and Copi
 
 So buckle up, bring your ideas, and get ready to experience the future of software engineering. Let’s build, innovate, and have some serious fun along the way!
 
-> [!IMPORTANT] ⚠️
+> [!IMPORTANT]
 > Before you attend the workshop, make sure you’ve checked off the prerequisites below so you can dive right in and make the most of this experience. ✅
 
 ## Prerequisites 📝
