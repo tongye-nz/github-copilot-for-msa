@@ -59,10 +59,32 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
 
 1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
 1. Select **Agent** in the Copilot Chat panel
-1. Click the 
 
-> **📸 SCREENSHOT NEEDED**: Command Palette with Agent Mode option highlighted
-> **📸 SCREENSHOT NEEDED**: Agent Mode icon in Copilot Chat panel
+    ![GitHub Copilot Agent Mode button](images/github-copilot-agent-mode.png)
+
+1. Click the **Configure Tools** button to see the tools available to the agent
+
+   ![GitHub Copilot Agent Mode Configure Tools](images/github-copilot-agent-mode-configure-tools.png)
+
+1. Look through a few of the tools to see what is available.
+
+> [!NOTE]
+> Only 128 tools can be used at a time. If you have more than 128 tools ticked, you will need to remove some of them before you can use Agent Mode. Just turn off any but the `built-in` sections for now.
+>
+> You will see this error message if you try to use Agent Mode with too many tools selected:
+> ![GitHub Copilot Agent Mode Too Many Tools](images/github-copilot-agent-mode-too-many-tools.png)
+
+1. Enter your first agent prompt:
+
+   ```text
+   I'm just about to start working through Step 2 of the workshop in this repo. What will I be doing next?
+   ```
+
+   The agent will scan through the files in your repository and tell you what it determines you will be doing next. If you want to `steer` the agent, you can provide more context in your prompt, such as using the #file tag to specify a particular file you want it to look at:
+
+   ```text
+   I'm just about to start working through #file:workshop-step-2-agent-mode-and-custom-chat-modes.md of the workshop in this repo. What will I be doing next?
+   ```
 
 ## Part 3: Working with Custom Chat Modes (10 minutes) 💭
 
