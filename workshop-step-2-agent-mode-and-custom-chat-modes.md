@@ -5,15 +5,10 @@ Learn to collaborate with GitHub Copilot's advanced features to brainstorm and r
 ## Learning Objectives 🎯
 
 - ✅ Use GitHub Copilot Agent Mode for complex tasks
+- ✅ Learn about custom chat modes for specific development tasks
 - ✅ Work with custom chat modes (`simple_app_idea_generator` and `mentor`)
 - ✅ Develop and refine your application concept
 - ✅ Choose an appropriate technology stack
-
-## Prerequisites Check ✅
-
-- [ ] Forked this repository to your GitHub account
-- [ ] GitHub Copilot enabled in VS Code
-- [ ] GitHub Copilot Chat extension installed and activated
 
 ## Part 1: Repository Setup (5 minutes) 🔧
 
@@ -21,21 +16,36 @@ Learn to collaborate with GitHub Copilot's advanced features to brainstorm and r
 
 1. Navigate to: `https://github.com/PlagueHO/github-copilot-for-msa`
 2. Click **Fork** button (top-right corner)
-3. Select your GitHub account as destination
 
-> **📸 SCREENSHOT NEEDED**: Fork button location on GitHub repository page
+   ![Create a fork of the repository](images/github-fork-repository.png)
+
+3. Select your GitHub account as destination and click **Create fork**
+
+   ![Create a fork of the repository](images/github-fork-repository-create.png)
 
 ### Step 2: Clone Your Fork
 
-1. Open terminal and run (replace `<your-username>`):
+1. Open terminal and run (replace `<your-github-username>`):
 
    ```bash
-   gh repo clone <your-username>/github-copilot-for-msa
+   gh repo clone <your-github-username>/github-copilot-for-msa
    cd github-copilot-for-msa
    code .
    ```
 
-> **📸 SCREENSHOT NEEDED**: Terminal showing successful clone and VS Code opening
+### Step 2 (Alternative): Use GitHub Codespaces
+
+Alternatively, you can use GitHub Codespaces to run the workshop in your browser by clicking the "Open in Codespaces" button on the repository page. However, this can take a few minutes to set up and so if you have limited time, you may prefer to use the local setup.
+
+1. In your browser, open the page of the GitHub repository for the fork you created in the previous step `https://github.com/<your-github-username>/github-copilot-for-msa`.
+1. Click the **Code** button (top-right corner)
+1. Click **Codespaces** tab
+1. Select **Create codespace on main**
+
+   ![Create a Codespace](images/github-create-codespace.png)
+
+1. Wait for Codespace to initialize (this may take a few minutes)
+1. 
 
 ## Part 2: Understanding Agent Mode (5 minutes) 🕵️‍♂️
 

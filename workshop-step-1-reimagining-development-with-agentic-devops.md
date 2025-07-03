@@ -4,10 +4,10 @@ Welcome to the future of software development! This opening session sets the sta
 
 ## Learning Objectives 🎯
 
-- ✅ Understand the fundamentals of GitHub Copilot and AI-assisted development
 - ✅ Learn about Agentic DevOps and how AI transforms the development process
+- ✅ Understand the fundamentals of GitHub Copilot and AI-assisted development
 - ✅ Prepare for the shift from traditional coding to Agentic AI collaboration
-- ✅ Building your own AI-centric engineering process
+- ✅ Prepare to build your own AI-centric engineering process
 
 ## Session Overview 📋
 
@@ -25,7 +25,8 @@ This step is primarily a **facilitator-led presentation** covering:
 - The importance of context - Context Engineering
 - Customizing Copilot to reimagine your development workflow
 
-> **📸 PRESENTATION SLIDE**: Before/After comparison of development workflows
+![Purpose](images/slide-4.png)
+![Context Engineering](images/slide-5.png)
 
 ## Mental Model Shift 🧠
 
@@ -36,16 +37,16 @@ This step is primarily a **facilitator-led presentation** covering:
 
 - 📋 **Product Manager**: Define product vision, features and requirements
 - 🏗️ **Architect**: Design the overall solution and approach
-- **Developer**: Write code with AI assistance, focusing on high-level logic
-- **UX Designer**: Focus on user experience and interface design
+- 💻 **Developer**: Write code with AI assistance, focusing on high-level logic
+- 🎨 **UX Designer**: Focus on user experience and interface design
 - 🛠️ **Process Owner**: Establish and maintain the development process
 - 🎯 **Quality Guardian**: Review, test, and refine AI-generated solutions
 - 🤝 **AI Collaborator**: Communicate effectively with AI tools
-- **Documenter**: Maintain clear documentation for AI and human understanding
-- **SRE**: Ensure reliability and performance of AI-assisted applications
-- **Security Champion**: Integrate security best practices into AI workflows
-- **Data Scientist**: Analyze data and provide insights for AI models
-- **DevOps Engineer**: Automate deployment and operations with AI tools
+- 📚 **Documenter**: Maintain clear documentation for AI and human understanding
+- 🚀 **SRE**: Ensure reliability and performance of AI-assisted applications
+- 🔒 **Security Champion**: Integrate security best practices into AI workflows
+- 📊 **Data Scientist**: Analyze data and provide insights for AI models
+- ⚙️ **DevOps Engineer**: Automate deployment and operations with AI tools
 - And more!
 
 ## What's Coming Next 🔄

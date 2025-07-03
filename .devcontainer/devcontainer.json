@@ -1,7 +1,7 @@
 {
     "name": "genai-copilot-for-msa",
     "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-jammy",
-    "workspaceFolder": "/workspaces/genai-database-explorer",
+    "workspaceFolder": "/workspaces/github-copilot-for-msa",
     "onCreateCommand": "tr -d '\\r' < .devcontainer/on-setup.sh > /tmp/on-setup.sh && mv /tmp/on-setup.sh .devcontainer/on-setup.sh && chmod +x .devcontainer/on-setup.sh && bash .devcontainer/on-setup.sh",
     // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
