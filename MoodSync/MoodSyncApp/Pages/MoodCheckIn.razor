@@ -1,0 +1,184 @@
+@page "/mood-checkin"
+@using MoodSyncApp.Models
+@using MoodSyncApp.Services
+@inject IMoodService MoodService
+@inject NavigationManager Navigation
+
+<PageTitle>Mood Check-In - MoodSync</PageTitle>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>🌤️ How are you feeling today?</h3>
+                    <p class="text-muted">Your daily mood check-in</p>
+                </div>
+                <div class="card-body">
+                    @if (isSubmitting)
+                    {
+                        <div class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Saving...</span>
+                            </div>
+                            <p class="mt-2">Saving your mood...</p>
+                        </div>
+                    }
+                    else if (isSubmitted)
+                    {
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <span style="font-size: 4rem;">@selectedMood.GetEmoji()</span>
+                                <h4>Thanks for checking in!</h4>
+                                <p class="text-muted">Your mood has been recorded.</p>
+                            </div>
+                            <button class="btn btn-primary me-2" @onclick="GoToDashboard">
+                                View Dashboard
+                            </button>
+                            <button class="btn btn-outline-secondary" @onclick="CheckInAgain">
+                                Update Mood
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="mood-selection mb-4">
+                            <div class="row text-center">
+                                @foreach (var mood in Enum.GetValues<MoodType>())
+                                {
+                                    <div class="col-4 col-md-2 mb-3">
+                                        <button class="btn btn-outline-primary mood-btn @(selectedMood == mood ? "active" : "")" 
+                                                @onclick="() => SelectMood(mood)">
+                                            <div style="font-size: 2.5rem;">@mood.GetEmoji()</div>
+                                            <div class="small">@mood.GetDescription().Split('/')[0]</div>
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        @if (selectedMood != MoodType.Neutral)
+                        {
+                            <div class="mb-4">
+                                <label class="form-label">
+                                    <strong>Want to add a note?</strong> <small class="text-muted">(Optional)</small>
+                                </label>
+                                <textarea class="form-control" 
+                                          @bind="moodNote" 
+                                          placeholder="How are you feeling? What's on your mind?"
+                                          rows="3"
+                                          maxlength="280"></textarea>
+                                <div class="form-text">@(280 - (moodNote?.Length ?? 0)) characters remaining</div>
+                            </div>
+                        }
+
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg" 
+                                    @onclick="SubmitMood" 
+                                    disabled="@(selectedMood == MoodType.Neutral && string.IsNullOrEmpty(selectedMoodText))">
+                                <span class="me-2">@selectedMood.GetEmoji()</span>
+                                Submit Mood
+                            </button>
+                        </div>
+
+                        @if (existingMood != null)
+                        {
+                            <div class="mt-4 p-3 bg-light rounded">
+                                <h6>Today's Current Mood:</h6>
+                                <div class="d-flex align-items-center">
+                                    <span class="me-2" style="font-size: 1.5rem;">@existingMood.MoodValue.GetEmoji()</span>
+                                    <div>
+                                        <strong>@existingMood.MoodValue.GetDescription()</strong>
+                                        @if (!string.IsNullOrEmpty(existingMood.Note))
+                                        {
+                                            <div><small class="text-muted">"@existingMood.Note"</small></div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .mood-btn {
+        width: 100%;
+        height: 100px;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .mood-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .mood-btn.active {
+        background-color: var(--bs-primary);
+        color: white;
+        border-color: var(--bs-primary);
+        transform: scale(1.05);
+    }
+</style>
+
+@code {
+    private MoodType selectedMood = MoodType.Neutral;
+    private string selectedMoodText = "";
+    private string moodNote = "";
+    private bool isSubmitting = false;
+    private bool isSubmitted = false;
+    private MoodEntry? existingMood;
+
+    protected override async Task OnInitializedAsync()
+    {
+        existingMood = await MoodService.GetTodaysMoodAsync("user1");
+        if (existingMood != null)
+        {
+            selectedMood = existingMood.MoodValue;
+            moodNote = existingMood.Note ?? "";
+        }
+    }
+
+    private void SelectMood(MoodType mood)
+    {
+        selectedMood = mood;
+        selectedMoodText = mood.GetDescription();
+        StateHasChanged();
+    }
+
+    private async Task SubmitMood()
+    {
+        isSubmitting = true;
+        StateHasChanged();
+
+        // Simulate API call delay
+        await Task.Delay(1000);
+
+        var entry = new MoodEntry
+        {
+            MoodValue = selectedMood,
+            Note = string.IsNullOrWhiteSpace(moodNote) ? null : moodNote
+        };
+
+        await MoodService.AddMoodEntryAsync(entry);
+
+        isSubmitting = false;
+        isSubmitted = true;
+        StateHasChanged();
+    }
+
+    private void GoToDashboard()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+    private void CheckInAgain()
+    {
+        isSubmitted = false;
+        StateHasChanged();
+    }
+}

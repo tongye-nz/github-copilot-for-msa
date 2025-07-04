@@ -1,0 +1,134 @@
+﻿@page "/"
+@using MoodSyncApp.Models
+@using MoodSyncApp.Services
+@inject IMoodService MoodService
+
+<PageTitle>MoodSync - Dashboard</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h1 class="display-4">🌤️ MoodSync</h1>
+                    <p class="lead">Your Emotional Weather Dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>📝 Today's Check-In</h5>
+                </div>
+                <div class="card-body text-center">
+                    @if (todaysMood != null)
+                    {
+                        <div class="mb-3">
+                            <span style="font-size: 3rem;">@todaysMood.MoodValue.GetEmoji()</span>
+                            <h4>@todaysMood.MoodValue.GetDescription()</h4>
+                            @if (!string.IsNullOrEmpty(todaysMood.Note))
+                            {
+                                <p class="text-muted">"@todaysMood.Note"</p>
+                            }
+                        </div>
+                        <a href="/mood-checkin" class="btn btn-outline-primary">Update Mood</a>
+                    }
+                    else
+                    {
+                        <div class="mb-3">
+                            <span style="font-size: 3rem;">❓</span>
+                            <h4>No check-in today</h4>
+                            <p class="text-muted">How are you feeling?</p>
+                        </div>
+                        <a href="/mood-checkin" class="btn btn-primary">Check In Now</a>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>👥 Friends' Weather</h5>
+                </div>
+                <div class="card-body">
+                    @if (friendsMoods?.Any() == true)
+                    {
+                        @foreach (var friend in friendsMoods)
+                        {
+                            <div class="d-flex align-items-center mb-3 p-2 bg-light rounded">
+                                <div class="me-3">
+                                    <span style="font-size: 2rem;">@friend.MoodValue.GetWeatherIcon()</span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">@friend.UserName</h6>
+                                    <small class="text-muted">@friend.MoodValue.GetDescription()</small>
+                                    @if (!string.IsNullOrEmpty(friend.Note))
+                                    {
+                                        <div><small class="text-muted">"@friend.Note"</small></div>
+                                    }
+                                </div>
+                                <div>
+                                    <small class="text-muted">@friend.CreatedAt.ToString("HH:mm")</small>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center">No friends have checked in today</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>📊 Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <h3>@moodHistory.Count</h3>
+                            <small class="text-muted">Total Check-ins</small>
+                        </div>
+                        <div class="col-4">
+                            <h3>@(friendsMoods?.Count ?? 0)</h3>
+                            <small class="text-muted">Friends Active Today</small>
+                        </div>
+                        <div class="col-4">
+                            <h3>@(moodHistory.Count > 0 ? Math.Round((double)moodHistory.Count(m => m.MoodValue == MoodType.Happy) / moodHistory.Count * 100) : 0)%</h3>
+                            <small class="text-muted">Happy Days</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private MoodEntry? todaysMood;
+    private List<MoodEntry> friendsMoods = new();
+    private List<MoodEntry> moodHistory = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadDashboardData();
+    }
+
+    private async Task LoadDashboardData()
+    {
+        todaysMood = await MoodService.GetTodaysMoodAsync("user1");
+        friendsMoods = await MoodService.GetFriendsMoodsAsync();
+        moodHistory = await MoodService.GetMoodHistoryAsync("user1");
+    }
+}
+
+<SurveyPrompt Title="How is Blazor working for you?" />
