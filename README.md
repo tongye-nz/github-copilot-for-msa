@@ -71,7 +71,8 @@ The key to using AI to create production ready applications is to provide ground
 
 ## Resources 📚
 
-- [GitHub Copilot Assets Library](https://github.com/PlagueHO/github-copilot-assets-library)
+- [GitHub Copilot Assets Library](https://github.com/PlagueHO/github-copilot-assets-library) - Curated collection of prompts and examples
+- [GitHub Copilot Awesome-Copilot Library](https://github.com/github/awesome-copilot) - Community-curated resources and examples
 - [GitHub Copilot Chat Documentation](https://docs.github.com/en/copilot/chat) 📖
 - [Visual Studio Code Documentation](https://code.visualstudio.com/docs) 📖
 - [Microsoft Learn: Accelerate app development by using GitHub Copilot](https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/) 📖

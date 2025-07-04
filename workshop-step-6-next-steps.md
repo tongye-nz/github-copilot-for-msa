@@ -27,6 +27,7 @@ Congratulations on completing your AI-powered development journey! This final st
 - [Accelerate app development by using GitHub Copilot](https://learn.microsoft.com/en-us/training/paths/accelerate-app-development-using-github-copilot/) - Microsoft Learn comprehensive training
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot) - Official documentation and best practices
 - [GitHub Copilot Assets Library](https://github.com/PlagueHO/github-copilot-assets-library) - Curated collection of prompts and examples
+- [GitHub Copilot Awesome-Copilot Library](https://github.com/github/awesome-copilot) - Community-curated resources and examples
 
 ### **Advanced AI Development**
 
@@ -47,10 +48,10 @@ Congratulations on completing your AI-powered development journey! This final st
 Take the app you built in Step 4 and enhance it:
 
 1. **Add new features** from your original specification
-2. **Improve the user interface** with better styling and UX
-3. **Add data persistence** using localStorage or a simple database
-4. **Deploy your app** to GitHub Pages, Netlify, or Vercel
-5. **Share your creation** on social media or with friends
+1. **Improve the user interface** with better styling and UX
+1. **Add data persistence** using localStorage or a simple database
+1. **Deploy your app** to GitHub Pages or Azure Static Web Apps
+1. **Share your creation** on social media or with friends
 
 ### **Exercise 2: Practice Different Domains (1-2 hours)**
 
@@ -62,14 +63,22 @@ Build small projects in different areas to expand your skills:
 - **API Development**: Create a REST API with your preferred framework
 - **Game Development**: Build a simple browser game
 
-### **Exercise 3: Custom Prompt Engineering (30 minutes)**
+### **Exercise 3: Custom Prompt Files (30 minutes)**
 
 Create your own custom prompt files:
 
 1. **Identify a repetitive task** in your development workflow
-2. **Design a prompt file** to automate that task
-3. **Test and refine** your prompt with different scenarios
-4. **Share your prompt** with the community
+1. **Design a prompt file** to automate that task
+1. **Test and refine** your prompt with different scenarios
+1. **Share your prompt** with the community
+
+### **Exercise 4: Create Custom Chat Modes (30 minutes)**
+
+Build a custom chat mode for a specific domain:
+
+1. **Choose a domain** (e.g., web development, data science)
+1. **Define the key tasks** and questions for that domain
+1. **Try out your custom chat mode** in GitHub Copilot Chat
 
 ## Building Your AI Development Practice 🛠️
 
@@ -121,11 +130,10 @@ Create your own custom prompt files:
 
 **Essential Commands:**
 
-- `@mentor` - Get technical guidance and code review
-- `@simple_app_idea_generator` - Brainstorm new project ideas
-- `/create_spec` - Generate comprehensive project specifications
-- `/create_plan` - Create detailed implementation plans
-- Agent Mode - For complex, multi-file application development
+- `#` - Grounding and context setting
+- `/create_specification` - Generate comprehensive project specifications
+- `/create_implementation_plan` - Create detailed implementation plans
+- `/new` - Create a new set of workspace files
 
 **Best Practices:**
 
@@ -133,6 +141,13 @@ Create your own custom prompt files:
 - Iterate and refine AI responses through conversation
 - Always review and understand AI-generated code
 - Use AI as a collaborator, not a replacement for thinking
+
+**Context Engineering Tips:**
+
+- **Break large tasks down** – just like us, AI can get “stuck” or confused if they try to do too much at once. Start with specifications and create implementation plans and provide them to the AI as context.
+- **Be explicit and give context** – Although AI might be able to figure out the right answer, it isn’t a mind reader. Explicitly reference code files, code docs and spec, package versions and docs and tools. Use #, @ and /.
+- **Provide grounding** – Grounding the Agent with additional knowledge about how/what/why. “How do you want this done?”, “What is the purpose of this?”, “Why does this matter?”. It’ll make better decisions when it doesn’t know the answer but knows these things.
+- **Give instructions** – Agents can “figure out” complex tasks, but they’re faster and give you higher quality output if you give them explicit steps on how to accomplish the task.
 
 ## Stay Connected 🌐
 
