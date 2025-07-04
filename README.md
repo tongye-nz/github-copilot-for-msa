@@ -60,7 +60,7 @@ The key to using AI to create production ready applications is to provide ground
    - (Optional) Create a new repo and use the `#new` Agent tool to scaffold your application first
    - Ask Copilot in Agent mode to build your application from the Specification and Implementation Plan you created.
 
-5. **Realworld Scenarios** (25 mins) - 📖 [**Detailed Instructions**](workshop-step-5-realworld-scenarios.md)
+5. **Realworld Scenarios** (20 mins) - 📖 [**Detailed Instructions**](workshop-step-5-realworld-scenarios.md)
    - Explaining code with Copilot
    - Generating unit tests for your application
    - Refactoring existing code with Copilot
