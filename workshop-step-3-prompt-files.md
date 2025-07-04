@@ -99,8 +99,8 @@ You can also create your own prompt files by creating a `*.prompt.md` markdown f
 
 **By the end of this step, you should have:**
 
-- [ ] Complete app specification document (`app-specification.md`)
-- [ ] Detailed implementation plan (`implementation-plan.md`)  
+- [ ] Complete app specification document (`spec/spec-face-link.md`)
+- [ ] Detailed implementation plan (e.g `plan/feature-face-link.md`)  
 - [ ] Principal Software Engineer validation of your approach
 - [ ] Clear understanding of what you'll build
 - [ ] Ready-to-execute implementation plan
@@ -109,7 +109,7 @@ You can also create your own prompt files by creating a `*.prompt.md` markdown f
 
 - **Generic/incomplete outputs?** → Provide more specific context, ask targeted follow-up questions
 - **Technical concerns?** → Always validate complex decisions with mentor, ask for simpler alternatives
-- **A prompt didn't do what you thought** → Tell Copilot to "Please try again" or "Can you do that differently?" to re-run the prompt with the same context.
+- **A prompt didn't do what you thought** → Tell Copilot to "Please try again, but consider ..." or "Can you do that differently but change ..."to re-run the prompt with the same context.
 
 ---
 
