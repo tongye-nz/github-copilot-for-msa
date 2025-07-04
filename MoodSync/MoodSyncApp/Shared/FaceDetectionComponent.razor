@@ -6,8 +6,8 @@
 <div class="face-detection-container">
     <div class="card">
         <div class="card-header text-center">
-            <h5>📸 AI Mood Detection</h5>
-            <p class="text-muted mb-0">Let our AI suggest your mood based on your facial expression</p>
+            <h5>🤖 AI Recognition & Mood Detection</h5>
+            <p class="text-muted mb-0">AI-powered user identification and mood analysis</p>
         </div>
         <div class="card-body">
             @if (!cameraInitialized)
@@ -23,9 +23,10 @@
             {
                 <div class="text-center">
                     <div class="spinner-border text-primary mb-3" role="status">
-                        <span class="visually-hidden">Analyzing...</span>
+                        <span class="visually-hidden">Identifying...</span>
                     </div>
-                    <p>🤖 Analyzing your expression...</p>
+                    <p>🤖 Identifying user and analyzing mood...</p>
+                    <small class="text-muted">This may take a moment</small>
                 </div>
             }
             else
@@ -37,33 +38,81 @@
                     </div>
                     
                     <div class="text-center mb-3">
-                        <button class="btn btn-success me-2" @onclick="CaptureAndAnalyze" disabled="@isProcessing">
-                            <span>📸</span> Analyze My Mood
+                        <button class="btn btn-success me-2" @onclick="IdentifyAndAnalyze" disabled="@isProcessing">
+                            <span>�</span> Identify & Analyze
                         </button>
                         <button class="btn btn-outline-secondary" @onclick="StopCamera">
                             <span>⏹️</span> Stop Camera
                         </button>
                     </div>
 
-                    @if (lastDetectionResult != null)
+                    @if (lastIdentificationResult != null)
                     {
-                        <div class="detection-result">
-                            @if (lastDetectionResult.FaceDetected)
+                        <div class="identification-result">
+                            @if (lastIdentificationResult.UserRecognized && lastIdentificationResult.IdentifiedUser != null)
                             {
                                 <div class="alert alert-success">
-                                    <div class="row align-items-center">
-                                        <div class="col-2 text-center">
-                                            <span style="font-size: 2.5rem;">@lastDetectionResult.SuggestedMood.GetEmoji()</span>
-                                        </div>
-                                        <div class="col-10">
-                                            <h6 class="mb-1">
-                                                <strong>Detected: @lastDetectionResult.DetectedEmotion.ToUpper()</strong>
-                                                <span class="badge bg-success ms-2">@((int)(lastDetectionResult.Confidence * 100))% confidence</span>
-                                            </h6>
-                                            <p class="mb-2">@lastDetectionResult.Message</p>
-                                            <button class="btn btn-sm btn-primary" @onclick="() => AcceptSuggestion(lastDetectionResult.SuggestedMood)">
-                                                Use This Mood
-                                            </button>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <!-- User Identification Header -->
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="me-3">
+                                                    <span style="font-size: 3rem;">@lastIdentificationResult.IdentifiedUser.Avatar</span>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h5 class="mb-1">
+                                                        <strong>@lastIdentificationResult.IdentifiedUser.Name</strong>
+                                                        <span class="badge bg-success ms-2">@((int)(lastIdentificationResult.Confidence * 100))% match</span>
+                                                    </h5>
+                                                    <div class="text-muted small">
+                                                        <span class="me-3">📧 @lastIdentificationResult.IdentifiedUser.Email</span>
+                                                        <span class="me-3">👥 @lastIdentificationResult.IdentifiedUser.Relationship</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Context Information -->
+                                            <div class="bg-light p-3 rounded mb-3">
+                                                <h6 class="mb-2">📋 Context</h6>
+                                                <div class="row small">
+                                                    <div class="col-md-6">
+                                                        <strong>Last Seen:</strong> @lastIdentificationResult.IdentifiedUser.LastSeenContext<br>
+                                                        <strong>Status:</strong> @lastIdentificationResult.IdentifiedUser.CurrentStatus
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <strong>Recent Activities:</strong>
+                                                        <ul class="mb-0 ps-3">
+                                                            @foreach (var activity in lastIdentificationResult.IdentifiedUser.RecentActivities.Take(2))
+                                                            {
+                                                                <li>@activity</li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Mood Suggestion -->
+                                            <div class="bg-primary bg-opacity-10 p-3 rounded mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="me-3">
+                                                        <span style="font-size: 2.5rem;">@lastIdentificationResult.SuggestedMood.GetEmoji()</span>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="mb-1">
+                                                            <strong>Suggested Mood: @lastIdentificationResult.SuggestedMood.GetDescription()</strong>
+                                                        </h6>
+                                                        <small class="text-muted">@lastIdentificationResult.SuggestedMoodReason</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Welcome Message -->
+                                            <div class="text-center">
+                                                <p class="mb-3"><em>@lastIdentificationResult.Message</em></p>
+                                                <button class="btn btn-primary" @onclick="() => AcceptSuggestion(lastIdentificationResult.SuggestedMood)">
+                                                    <span>✅</span> Use Suggested Mood
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +120,13 @@
                             else
                             {
                                 <div class="alert alert-warning">
-                                    <span>⚠️</span> @lastDetectionResult.Message
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2" style="font-size: 1.5rem;">❓</span>
+                                        <div>
+                                            <h6 class="mb-1">Face Detected - Unknown User</h6>
+                                            <small>@lastIdentificationResult.Message</small>
+                                        </div>
+                                    </div>
                                 </div>
                             }
                         </div>
@@ -106,12 +161,16 @@
         opacity: 0.5;
     }
 
-    .detection-result {
+    .identification-result {
         margin-top: 1rem;
     }
 
     .alert {
         border-radius: 10px;
+    }
+
+    .bg-opacity-10 {
+        background-color: rgba(13, 110, 253, 0.1) !important;
     }
 </style>
 
@@ -120,7 +179,7 @@
     private ElementReference canvasElement;
     private bool cameraInitialized = false;
     private bool isProcessing = false;
-    private FaceDetectionResult? lastDetectionResult;
+    private UserIdentificationResult? lastIdentificationResult;
 
     [Parameter] public EventCallback<MoodType> OnMoodSuggested { get; set; }
 
@@ -147,7 +206,7 @@
         }
     }
 
-    private async Task CaptureAndAnalyze()
+    private async Task IdentifyAndAnalyze()
     {
         if (!cameraInitialized) return;
 
@@ -158,16 +217,19 @@
         {
             var imageData = await JSRuntime.InvokeAsync<string>("captureFrame", videoElement, canvasElement);
             
-            await Task.Delay(1500);
+            // Simulate processing delay for better UX
+            await Task.Delay(2000);
             
-            lastDetectionResult = await FaceDetectionService.DetectFaceAndEmotionAsync(imageData);
+            // Use the new identification service
+            lastIdentificationResult = await FaceDetectionService.IdentifyUserAsync(imageData);
         }
         catch (Exception)
         {
-            lastDetectionResult = new FaceDetectionResult
+            lastIdentificationResult = new UserIdentificationResult
             {
-                FaceDetected = false,
-                Message = "Analysis failed. Please try again."
+                UserRecognized = false,
+                Message = "Analysis failed. Please try again.",
+                SuggestedMood = MoodType.Neutral
             };
         }
         finally
@@ -186,7 +248,7 @@
     {
         await JSRuntime.InvokeVoidAsync("stopCamera");
         cameraInitialized = false;
-        lastDetectionResult = null;
+        lastIdentificationResult = null;
         StateHasChanged();
     }
 }

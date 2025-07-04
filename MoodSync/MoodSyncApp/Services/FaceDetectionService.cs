@@ -5,6 +5,7 @@ namespace MoodSyncApp.Services
     public interface IFaceDetectionService
     {
         Task<FaceDetectionResult> DetectFaceAndEmotionAsync(string imageData);
+        Task<UserIdentificationResult> IdentifyUserAsync(string imageData);
         Task<bool> InitializeCameraAsync();
     }
 
@@ -21,6 +22,7 @@ namespace MoodSyncApp.Services
     {
         private readonly Random _random = new();
         private readonly string[] _emotions = { "happy", "sad", "angry", "surprised", "neutral", "tired" };
+        private readonly IUserIdentificationService _userIdentificationService;
         private readonly string[] _happyMessages = {
             "You're glowing today! ✨",
             "That smile is contagious! 😊",
@@ -34,10 +36,21 @@ namespace MoodSyncApp.Services
             "Remember, this too shall pass"
         };
 
+        public MockFaceDetectionService(IUserIdentificationService userIdentificationService)
+        {
+            _userIdentificationService = userIdentificationService;
+        }
+
         public Task<bool> InitializeCameraAsync()
         {
             // Mock initialization - always succeeds
             return Task.FromResult(true);
+        }
+
+        public async Task<UserIdentificationResult> IdentifyUserAsync(string imageData)
+        {
+            // Delegate to user identification service
+            return await _userIdentificationService.IdentifyUserAsync(imageData);
         }
 
         public Task<FaceDetectionResult> DetectFaceAndEmotionAsync(string imageData)
