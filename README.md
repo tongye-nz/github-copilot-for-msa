@@ -41,11 +41,11 @@ The key to using AI to create production ready applications is to provide ground
 
 ## Workshop Agenda 📅
 
-1. **Reimagining Development with Agentic DevOps** (10 mins) - 📖 [**Detailed Instructions**](workshop-step-1-reimagining-development-with-agentic-devops.md)
+1. **Reimagining Development with Agentic DevOps** (15 mins) - 📖 [**Detailed Instructions**](workshop-step-1-reimagining-development-with-agentic-devops.md)
    - GitHub Copilot overview
    - Building your own AI centric engineering process
 
-2. **Agent Mode & Custom Chat Modes** (20 mins) - 📖 [**Detailed Instructions**](workshop-step-2-agent-mode-and-custom-chat-modes.md)
+2. **Agent Mode & Custom Chat Modes** (25 mins) - 📖 [**Detailed Instructions**](workshop-step-2-agent-mode-and-custom-chat-modes.md)
    - Fork this repository to your GitHub account
    - Clone your fork of this repository using GitHub CLI `gh repo clone <your-username>/github-copilot-for-msa`
    - Come up with your app idea with the `simple_app_idea_generator` chat mode
@@ -56,11 +56,11 @@ The key to using AI to create production ready applications is to provide ground
    - Create your implementation plan using a custom prompt file `/create_plan`.
    - Run a last review of your plan and specification with the `mentor` chat mode
 
-4. **Build your application** (20 mins) - 📖 [**Detailed Instructions**](workshop-step-4-build-your-application.md)
+4. **Build your application** (25 mins) - 📖 [**Detailed Instructions**](workshop-step-4-build-your-application.md)
    - Use the `#new` Agent tool to scaffold your application
    - Ask Copilot in Agent mode to build your application from the Specification and Implementation Plan you created.
 
-5. **Realworld Scenarios** (20 mins) - 📖 [**Detailed Instructions**](workshop-step-5-realworld-scenarios.md)
+5. **Realworld Scenarios** (25 mins) - 📖 [**Detailed Instructions**](workshop-step-5-realworld-scenarios.md)
    - Explaining code with Copilot
    - Generating unit tests for your application
    - Refactoring existing code with Copilot

@@ -1,4 +1,4 @@
-# Workshop Step 2: Agent Mode & Custom Chat Modes (30 minutes) 🤖💬
+# Workshop Step 2: Agent Mode & Custom Chat Modes (25 minutes) 🤖💬
 
 Learn to collaborate with GitHub Copilot's advanced features to brainstorm and refine your app idea.
 
@@ -88,7 +88,7 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
 
    ![Your first Agent Mode prompt](images/github-copilot-agent-mode-first-prompt.png)
 
-## Part 3: Working with Custom Chat Modes (10 minutes) 💭
+## Part 3: Working with Custom Chat Modes (5 minutes) 💭
 
 **Custom chat modes** = Specialized AI assistants for specific development tasks that you can create to provide built-in context and instructions for the AI.
 
@@ -147,7 +147,7 @@ You can also create your own custom chat modes by creating a `*.chatmode.md` mar
 
 ## Part 4: Hands-On Exercise - Develop Your App Idea (10 minutes) 🚀
 
-### Exercise 1: Generate Your App Idea (5 minutes)
+### Exercise 1: Generate Your App Idea
 
 1. Open Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
 1. Click the **Agent** drop down and select `simple_app_idea_generator`:
@@ -175,7 +175,7 @@ You can also create your own custom chat modes by creating a `*.chatmode.md` mar
 
 Congratulations! You're now ready to check your idea with the mentor!
 
-### Exercise 2: Refine with the Mentor (5 minutes)
+### Exercise 2: Refine with the Mentor
 
 1. Click the **Agent** drop down and select `mentor`:
 

@@ -1,4 +1,4 @@
-# Workshop Step 3: Prompt Files (30 minutes) 📝✨
+# Workshop Step 3: Prompt Files (20 minutes) 📝✨
 
 Learn to create structured specifications and implementation plans using GitHub Copilot's prompt files.
 
@@ -6,7 +6,7 @@ Learn to create structured specifications and implementation plans using GitHub 
 
 - ✅ Understand prompt files and their power for structured AI guidance
 - ✅ Create comprehensive app specification using `/create_spec`
-- ✅ Develop detailed implementation plan using `/create_plan`
+- ✅ Develop detailed implementation plan using `/create_implementation_plan`
 - ✅ Conduct final review with mentor chat mode
 
 ## What Are Prompt Files 🤔
@@ -22,143 +22,78 @@ Learn to create structured specifications and implementation plans using GitHub 
 
 **How they work:**
 
-1. Invoke with forward slash (e.g., `/create_spec`)
-2. AI asks targeted questions about your project
-3. Generate comprehensive documentation based on answers
-4. Iterate and refine outputs as needed
+1. Invoke with forward slash (e.g., `/create_specification`)
+1. Uses the context from your chat session or files in your repository or just the name of the feature you want to create.
+1. Iterate and refine the specification or implementation plan as needed
+
+- [Click here to see how the create_specification prompt file is structured](.github/prompts/create_specification.md)
+- [Click here to see how the create_implementation_plan prompt file is structured](.github/prompts/create_implementation_plan.md)
+
+You can also create your own prompt files by creating a `*.prompt.md` markdown file in the [.github/prompts/](.github/prompts/) directory of your repository. See the [GitHub Copilot Custom Prompt Files](https://code.visualstudio.com/docs/copilot/copilot-customization#_prompt-files-experimental) for more details on how to create your own custom prompt files.
 
 ## Part 1: Available Prompt Files (5 minutes) 📖
 
-**Application Specification Generator (`/create_spec`)**
+- **Specification Generator** (`/create_specification`) - Produces a structured specification file (`spec-[purpose].md`) in the `spec` directory.
+- **Implementation Plan Generator** (`/create_implementation_plan`) - Produces a detailed implementation plan file(`*-[purpose].md`) in the `plan` directory based on the specification.
 
-Produces: Feature requirements, technical architecture, UX guidelines, database schema, API specs, security considerations
+## Part 2: Creating Your App Specification (5 minutes) 📋
 
-**Implementation Plan Generator (`/create_plan`)**
+1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Select the **Agent** drop down and choose `Agent`.
+1. Enter your prompt to run the specification generator:
 
-Produces: Project timeline, development phases, file structure, setup instructions, testing strategy, deployment considerations
+    ```text
+    /create_specification SpecPurpose: the application I defined earlier in this chat.
+    ```
 
-> **📸 SCREENSHOT NEEDED**: Copilot Chat showing /create_spec command autocomplete
+    ![Create Specification](images/github-copilot-create-specification.png)
 
-## Part 2: Creating Your App Specification (15 minutes) 📋
+1. After a moment, Copilot will create your specification file in the `spec` directory.
+1. Browse to the [spec/](spec/) directory and open the generated file (e.g., `spec-face-link.md`).
+1. Review the document and decide if it matches your expectations.
+1. If any corrections are needed, ask Copilot to refine specific sections or add missing details - **be specific** in your requests.
+1. When you're satisfied, click the `keep` button in the chat window.
 
-### Step 1: Invoke the Specification Prompt (2 minutes)
+    ![Keep specification](images/github-copilot-specification-keep.png)
 
-1. **Open GitHub Copilot Chat**
-2. **Type:** `/create_spec`
-3. **Be prepared to share:**
-   - Your app idea from Step 2
-   - Target audience and core features
-   - Technology preferences
-   - Any specific requirements
+### Part 3: Create the Implementation Plan (5 minutes)
 
-> **📸 SCREENSHOT NEEDED**: /create_spec prompt starting conversation with initial questions
+1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Select the **Agent** drop down and choose `Agent`.
+1. Enter your prompt to run the implementation plan generator (make sure you use the actual name of the specification file you created in the previous step):
 
-### Step 2: Work Through the Questions (8 minutes)
+    ```text
+    /create_implementation_plan PlanPurpose: the implementation plan to build the app defined in specification #file:spec-face-link.md step-by-step
+    ```
 
-**Example interaction:**
+    ![Create Implementation Plan](images/github-copilot-create-implementation-plan.png)
 
-```text
-You: /create_spec
+1. After a moment, Copilot will create your implementation plan in the `plan` directory.
+1. Browse to the [plan/](plan/) directory and open the generated file (e.g., `feature-face-link.md`).
+1. Review the document and decide if it matches your expectations and clearly defines the steps you need to take to build your application.
+1. If any corrections are needed, ask Copilot to refine specific sections or add missing details - **be specific** in your requests.
+1. When you're satisfied, click the `keep` button in the chat window.
 
-Copilot: I'll help you create a comprehensive specification. Let's start:
-1. What is your app's name and primary purpose?
+    ![Keep Implementation Plan](images/github-copilot-implementation-plan-keep.png)
 
-You: My app is called "FaceLink" - it's like Shazam but for people. It uses smart glasses with voice activation to discretely identify people and provide context about them.
+## Part 4: Final Review with Principal Software Engineer (5 minutes) 👨‍🏫
 
-Copilot: Excellent concept! Now let's dive deeper...
-```
+**Engage Principal Software Engineer for comprehensive review:**
 
-**Key areas covered:**
+1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Select the **Agent** drop down and choose `Principal Software Engineer`.
+1. Enter the following prompt (make sure to correct the file names to match your generated files):
 
-- App overview (purpose, audience, problem solved, unique value)
-- Feature requirements (MVP vs. future features, user interactions, data handling)  
-- Technical requirements (platforms, real-time needs, integrations, performance)
+    ```text
+    I've created a specification #file:app-specification.md and implementation plan #file:implementation-plan.md for an application I want to build. Can you review both documents and ensure all key aspects are covered? Check technical feasibility, security, completeness, and potential risks, testing strategies, and deployment considerations. If anything is missing or could be simplified, please make changes to the files directly.
+    ```
 
-> **📸 SCREENSHOT NEEDED**: Example specification output showing structured sections
+    ![Principal Software Engineer Review](images/github-copilot-principal-software-engineer-review.png)
 
-### Step 3: Review and Refine (5 minutes)
+1. You may be asked to confirm any changes made to the files. Review these changes carefully and approve them if they align with your expectations.
+1. When you're satisfied, click the `keep` button in the chat window.
 
-**Ask for clarifications:**
-
-```text
-Can you expand on the privacy and security considerations section?
-Can you add more detail about the smart glasses integration?
-What about offline capabilities?
-```
-
-**Save your work:**
-
-- Copy output to `app-specification.md`
-- Commit to your repository
-
-## Part 3: Creating Your Implementation Plan (10 minutes) 🗺️
-
-### Step 1: Generate Implementation Plan (3 minutes)
-
-**Start the planning process:**
-
-```text
-/create_plan
-
-Based on the specification we just created for FaceLink, 
-please create a detailed implementation plan.
-```
-
-> **📸 SCREENSHOT NEEDED**: /create_plan command in action with project context provided
-
-### Step 2: Work Through Planning Questions (5 minutes)
-
-**Key areas covered:**
-
-- **Project Structure**: Codebase organization, files/folders, component structure
-- **Development Phases**: Build order (MVP first), feature prioritization, key milestones  
-- **Technical Setup**: Development environment, dependencies, project configuration
-- **Testing & Deployment**: Testing approach, deployment strategy, CI/CD considerations
-
-### Step 3: Refine the Plan (2 minutes)
-
-**Ask for specific clarifications:**
-
-```text
-Can you break down Phase 1 into smaller, daily tasks?
-What specific libraries should I use for face recognition?
-How should I handle the smart glasses API integration?
-```
-
-**Save your work:**
-
-- Copy to `implementation-plan.md`
-- Commit to repository
-
-> **📸 SCREENSHOT NEEDED**: Example implementation plan showing phased development approach
-
-## Part 4: Final Review with Mentor (5 minutes) 👨‍🏫
-
-**Engage mentor for comprehensive review:**
-
-```text
-@mentor
-
-I've created a specification and implementation plan for my app. 
-Can you review both documents and provide feedback on:
-
-1. Technical feasibility for a 90-minute workshop
-2. Any missing critical components  
-3. Potential risks or challenges
-4. Recommendations for simplification if needed
-
-[Paste your specification and plan]
-```
-
-**Expected mentor feedback:**
-
-- ✅ Validate technical feasibility
-- ✅ Identify potential simplifications
-- ✅ Suggest alternative approaches if needed
-- ✅ Confirm tech stack choices
-- ✅ Highlight critical path items
-
-> **📸 SCREENSHOT NEEDED**: Mentor providing technical review and recommendations
+**CONGRATULATIONS!** 🎉 You have successfully created your application specification and implementation plan and can now hand it to GitHub Copilot Agent to build for you!
 
 ## Expected Outcomes & Next Steps 📋
 
@@ -166,15 +101,15 @@ Can you review both documents and provide feedback on:
 
 - [ ] Complete app specification document (`app-specification.md`)
 - [ ] Detailed implementation plan (`implementation-plan.md`)  
-- [ ] Mentor validation of your approach
+- [ ] Principal Software Engineer validation of your approach
 - [ ] Clear understanding of what you'll build
-- [ ] Ready-to-execute development plan
+- [ ] Ready-to-execute implementation plan
 
 **Quick Troubleshooting:**
 
-- **Prompt files not working?** → Update VS Code and Copilot extensions, try fresh chat session
 - **Generic/incomplete outputs?** → Provide more specific context, ask targeted follow-up questions
 - **Technical concerns?** → Always validate complex decisions with mentor, ask for simpler alternatives
+- **A prompt didn't do what you thought** → Tell Copilot to "Please try again" or "Can you do that differently?" to re-run the prompt with the same context.
 
 ---
 
