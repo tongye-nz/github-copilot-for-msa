@@ -27,6 +27,8 @@ This step is primarily a **facilitator-led presentation** covering:
 
 ![Purpose](images/slide-4.png)
 ![Context Engineering](images/slide-5.png)
+![GitHub Copilot Chat](images/slide-6.png)
+![Customizing Copilot](images/slide-7.png)
 
 ## Mental Model Shift 🧠
 
@@ -48,6 +50,17 @@ This step is primarily a **facilitator-led presentation** covering:
 - 📊 **Data Scientist**: Analyze data and provide insights for AI models
 - ⚙️ **DevOps Engineer**: Automate deployment and operations with AI tools
 - And more!
+
+## Context Engineering Tips
+
+How can you be a better context engineer? AI is not magic – providing context is key.
+
+![Context Engineering Tips](images/context-engineering-tips.png)
+
+- **Break large tasks down** – just like us, AI can get “stuck” or confused if they try to do too much at once. Start with specifications and create implementation plans and provide them to the AI as context.
+- **Be explicit and give context** – Although AI might be able to figure out the right answer, it isn’t a mind reader. Explicitly reference code files, code docs and spec, package versions and docs and tools. Use #, @ and /.
+- **Provide grounding** – Grounding the Agent with additional knowledge about how/what/why. “How do you want this done?”, “What is the purpose of this?”, “Why does this matter?”. It’ll make better decisions when it doesn’t know the answer but knows these things.
+- **Give instructions** – Agents can “figure out” complex tasks, but they’re faster and give you higher quality output if you give them explicit steps on how to accomplish the task.
 
 ## What's Coming Next 🔄
 

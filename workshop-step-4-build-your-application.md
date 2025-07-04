@@ -17,7 +17,7 @@ Transform your specification and implementation plan into a working application 
 **Ensure you have:**
 
 - [ ] `app-specification.md` - Your detailed app specification
-- [ ] `implementation-plan.md` - Your step-by-step development plan
+- [ ] `implementation-plan.md` - Your step-by-step development plan (optional but recommended)
 - [ ] Clear understanding of your MVP scope
 
 **Quick setup:**
