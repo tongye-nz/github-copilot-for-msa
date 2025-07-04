@@ -23,7 +23,7 @@ Learn to collaborate with GitHub Copilot's advanced features to brainstorm and r
 
    ![Create a fork of the repository](images/github-fork-repository-create.png)
 
-### Step 2: Clone Your Fork
+### Step 2 (Recommended): Clone Your Fork
 
 1. Open terminal and run (replace `<your-github-username>`):
 
@@ -46,7 +46,7 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
 
 1. Wait for Codespace to initialize (this may take a few minutes)
 
-## Part 2: Understanding Agent Mode (5 minutes) 🕵️‍♂️
+## Part 2: Understanding Agent Mode and setting up tools (5 minutes) 🕵️‍♂️
 
 **Agent Mode** = AI collaborative partner that can:
 
@@ -86,42 +86,73 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
    I'm just about to start working through #file:workshop-step-2-agent-mode-and-custom-chat-modes.md of the workshop in this repo. What will I be doing next?
    ```
 
+   ![Your first Agent Mode prompt](images/github-copilot-agent-mode-first-prompt.png)
+
 ## Part 3: Working with Custom Chat Modes (10 minutes) 💭
 
-**Custom chat modes** = Specialized AI assistants for specific development tasks.
+**Custom chat modes** = Specialized AI assistants for specific development tasks that you can create to provide built-in context and instructions for the AI.
 
-### Available Chat Modes
+> [!NOTE]
+> Custom chat modes are just markdown files that contain instructions, behaviours and built-in context for the AI that you can download or create.
 
-#### `@simple_app_idea_generator` 💡
+### Use these Chat Modes
+
+#### `simple_app_idea_generator` 💡
 
 - **Purpose**: Brainstorm and develop initial app concepts
 - **Use when**: Need creative inspiration or exploring different ideas
 - **Provides**: Unique concepts, market considerations, feature suggestions
 
-#### `@mentor` 👨‍🏫
+[Click here to see how the simple_app_idea_generator chat mode is structured](.github/chatmodes/simple_app_idea_generator.chatmode.md)
+
+#### `mentor` 👨‍🏫
 
 - **Purpose**: Acts as experienced developer mentor
 - **Use when**: Need technical guidance or idea refinement
 - **Provides**: Feasibility reviews, tech stack suggestions, best practices
 
-### How to Access Chat Modes
+[Click here to see how the mentor chat mode is structured](.github/chatmodes/mentor.chatmode.md)
 
-1. Open GitHub Copilot Chat panel (left sidebar)
-2. Type `@` + chat mode name (e.g., `@simple_app_idea_generator`)
-3. Follow prompts and engage in conversation
+#### Other Useful Chat Modes
 
-> **📸 SCREENSHOT NEEDED**: Copilot Chat panel showing @ autocomplete with available chat modes
-> **📸 SCREENSHOT NEEDED**: Example conversation with simple_app_idea_generator showing response
+There are lot more you could try out beyond these examples. Check out:
+
+- [critical_thinking](.github/chatmodes/critical_thinking.chatmode.md) to challenge your thinking and assumptions
+- [azure_principal_architect](.github/chatmodes/azure_principal_architect.chatmode.md) to get expert architectural guidance for Azure solutions
+- [principal_software_engineer](.github/chatmodes/principal_software_engineer.chatmode.md) to get expert software engineering guidance
+
+You can also create your own custom chat modes by creating a `*.chatmode.md` markdown file in the [.github/chatmodes/](.github/chatmodes/) directory of your repository. See the [Custom Chat Modes documentation](https://code.visualstudio.com/docs/copilot/chat/chat-modes#_custom-chat-mode) for more details on how to create your own custom chat modes.
+
+### How to Access a Custom Chat Mode
+
+1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Click the **Agent** drop down and select `simple_app_idea_generator`
+
+   ![GitHub Copilot Custom Chat Mode](images/github-copilot-select-custom-agent.png)
+
+1. Enter your prompt to start brainstorming app ideas (add any additional context you'd like to provide):
+
+   ```text
+   I want to build an app. Can you help me brainstorm some unique app ideas?
+   ```
+
+   ![Interact with simple_app_idea_generator](images/github-copilot-simple-app-idea-generator-start.png)
+
+1. The agent will start asking questions to gather more context about your interests, skills, and goals. Answer these questions to help it generate better ideas.
+1. When it has enough information, it will say:
+
+   ```text
+   🎉 OK! We’ve got enough to build a specification and get started! 🎉
+   ```
 
 ## Part 4: Hands-On Exercise - Develop Your App Idea (10 minutes) 🚀
 
 ### Exercise 1: Generate Your App Idea (5 minutes)
 
-1. **Open Copilot Chat** and start with the idea generator:
+1. Open Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Click the **Agent** drop down and select `simple_app_idea_generator`:
 
    ```text
-   @simple_app_idea_generator
-   
    I'm interested in building an app that helps solve everyday problems. 
    I have experience with [mention your languages/frameworks].
    I'm particularly interested in [social networking, productivity, health, education, etc.].
@@ -129,41 +160,40 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
    Can you help me brainstorm some unique app ideas?
    ```
 
-2. **Engage actively**:
+1. **Engage actively**:
    - Ask follow-up questions about interesting ideas
    - Request implementation complexity details
    - Explore variations of promising concepts
 
-3. **Document your favorites**:
-   - Create `my-app-ideas.md` in project root
-   - List top 3 concepts with brief descriptions
+1. Once the agent has enough information for your idea it will show:
 
-> **📸 SCREENSHOT NEEDED**: Active conversation with simple_app_idea_generator showing multiple app suggestions
+   ```text
+   🎉 OK! We’ve got enough to build a specification and get started! 🎉
+   ```
+
+   ![Interact with simple_app_idea_generator](images/github-copilot-simple-app-idea-generator-ready.png)
+
+Congratulations! You're now ready to check your idea with the mentor!
 
 ### Exercise 2: Refine with the Mentor (5 minutes)
 
-1. **Switch to mentor mode**:
+1. Click the **Agent** drop down and select `mentor`:
 
    ```text
-   @mentor
-   
-   I've been working with the idea generator and I'm considering these app concepts:
-   [paste your top 3 ideas]
-   
-   Can you help me evaluate these ideas and suggest the best technology stack?
+   I've been working with the idea generator and I've come up with an app idea that I think is unique and interesting and want to build.
    ```
 
-2. **Key questions to ask**:
-   - "Which idea has the best balance of innovation and feasibility?"
-   - "What technology stack would you recommend for [chosen idea]?"
+1. **Key questions to ask**:
+   - "What do you think about this idea?"
+   - "What technology stack would you recommend?"
    - "What are the main technical challenges I should be aware of?"
 
-3. **Make final decision**:
-   - Choose primary app concept
-   - Note recommended technology stack
-   - Identify 3-5 core features to focus on
+1. **Make final decision**:
+   - "OK, I think we should go ahead with this idea and use the suggested stack."
 
-> **📸 SCREENSHOT NEEDED**: Mentor chat mode providing technical evaluation and stack recommendations
+![Mentor mode completed](images/github-copilot-mentor-mode-complete.png)]
+
+**CONGRATULATIONS!** 🎉 You have successfully brainstormed and refined your app idea using GitHub Copilot's Agent Mode and custom chat modes. You're now ready to turn it into a specification!
 
 ## Expected Outcomes & Next Steps 📋
 
@@ -173,13 +203,18 @@ Alternatively, you can use GitHub Codespaces to run the workshop in your browser
 - [ ] Understanding of Agent Mode capabilities
 - [ ] Experience with custom chat modes
 - [ ] Well-defined app concept with technology stack
-- [ ] 3-5 core features identified
 
 **Quick Troubleshooting:**
 
-- **Chat modes not responding?** → Ensure Copilot Chat extension is enabled and you're signed into GitHub
-- **Getting generic responses?** → Provide more specific context about your goals and experience
-- **Overwhelmed by suggestions?** → Focus on one idea at a time, ask mentor to prioritize
+- **Can't think of an app idea?** → Try one of these apps (web based, mobile, or desktop):
+  - Pet adoption app
+  - Bookmark manager
+  - Local event finder
+  - Recipe organizer
+  - Fitness challenge app
+  - A game
+- **Getting generic responses?** → Provide more specific context about your goals and experience. Be explicit about what you want to achieve.
+- **Overwhelmed by suggestions?** → Focus on one idea at a time, ask mentor to prioritize.
 
 ---
 
