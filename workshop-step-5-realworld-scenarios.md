@@ -25,8 +25,8 @@ This is a real-world C# .NET application that demonstrates semantic model reposi
 
 **Activate Agent Mode and provide context:**
 
-```text
-I need you to analyze the Semantic Model Repository implementation in the samples/genai-database-explorer folder. 
+```md
+I need you to analyze the Semantic Model Repository implementation in the `samples/genai-database-explorer/src/GenAIDBExplorer/GenAIDBExplorer.Core/Repository/` folder.
 
 Please explore the Repository folder and related classes to understand:
 1. How the Semantic Model Repository works
@@ -46,7 +46,7 @@ Provide a comprehensive explanation of this repository pattern implementation.
 - Explains concurrency protection and caching mechanisms
 - Provides architectural insights and design pattern identification
 
-> **📸 SCREENSHOT NEEDED**: Agent Mode analyzing the repository structure and providing detailed architectural explanation
+![Explain Code](images/github-copilot-explain-code.png)
 
 ---
 
@@ -54,8 +54,8 @@ Provide a comprehensive explanation of this repository pattern implementation.
 
 **Provide specification context to Agent:**
 
-```text
-I have a specification for the Semantic Model Repository at spec/spec-data-semantic-model-repository.md. 
+```md
+I have a specification for the Semantic Model Repository at `samples/genai-database-explorer/spec/spec-data-semantic-model-repository.md`.
 
 Please:
 1. Review the specification requirements and acceptance criteria
@@ -81,7 +81,7 @@ Use FluentAssertions and Moq for the test implementations.
 - Generates new test methods with proper setup, assertions, and mocking
 - Ensures tests align with specification acceptance criteria
 
-> **📸 SCREENSHOT NEEDED**: Agent identifying test gaps and generating comprehensive edge case tests
+![Create Tests](images/github-copilot-create-tests.png)
 
 ---
 
@@ -89,8 +89,8 @@ Use FluentAssertions and Moq for the test implementations.
 
 **Request architectural review:**
 
-```text
-Please review the DatabaseConnectionManager in the samples/genai-database-explorer project and evaluate its current design.
+```md
+Please review the DatabaseConnectionManager in the `samples/genai-database-explorer/src/GenAIDBExplorer/GenAIDBExplorer.Core/Data/ConnectionManager` project and evaluate its current design.
 
 Analyze:
 1. Current implementation patterns and potential issues
@@ -117,7 +117,7 @@ Ensure the refactoring follows SOLID principles and modern C# best practices.
 - Updates related interfaces and dependency injection setup
 - Explains the benefits of the new design
 
-> **📸 SCREENSHOT NEEDED**: Agent reviewing the connection manager and providing factory pattern refactoring
+![Refactor Code](images/github-copilot-refactor-code.png)
 
 ---
 
