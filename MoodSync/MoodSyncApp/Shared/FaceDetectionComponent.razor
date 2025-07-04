@@ -1,0 +1,192 @@
+@using MoodSyncApp.Services
+@using MoodSyncApp.Models
+@inject IFaceDetectionService FaceDetectionService
+@inject IJSRuntime JSRuntime
+
+<div class="face-detection-container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>📸 AI Mood Detection</h5>
+            <p class="text-muted mb-0">Let our AI suggest your mood based on your facial expression</p>
+        </div>
+        <div class="card-body">
+            @if (!cameraInitialized)
+            {
+                <div class="text-center">
+                    <button class="btn btn-primary" @onclick="InitializeCamera">
+                        <span>📷</span> Start Camera
+                    </button>
+                    <p class="text-muted mt-2">Click to access your camera for mood detection</p>
+                </div>
+            }
+            else if (isProcessing)
+            {
+                <div class="text-center">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Analyzing...</span>
+                    </div>
+                    <p>🤖 Analyzing your expression...</p>
+                </div>
+            }
+            else
+            {
+                <div class="camera-section">
+                    <div class="video-container text-center mb-3">
+                        <video @ref="videoElement" id="cameraVideo" width="320" height="240" autoplay muted style="border-radius: 10px; border: 2px solid #007bff;"></video>
+                        <canvas @ref="canvasElement" id="captureCanvas" width="320" height="240" style="display: none;"></canvas>
+                    </div>
+                    
+                    <div class="text-center mb-3">
+                        <button class="btn btn-success me-2" @onclick="CaptureAndAnalyze" disabled="@isProcessing">
+                            <span>📸</span> Analyze My Mood
+                        </button>
+                        <button class="btn btn-outline-secondary" @onclick="StopCamera">
+                            <span>⏹️</span> Stop Camera
+                        </button>
+                    </div>
+
+                    @if (lastDetectionResult != null)
+                    {
+                        <div class="detection-result">
+                            @if (lastDetectionResult.FaceDetected)
+                            {
+                                <div class="alert alert-success">
+                                    <div class="row align-items-center">
+                                        <div class="col-2 text-center">
+                                            <span style="font-size: 2.5rem;">@lastDetectionResult.SuggestedMood.GetEmoji()</span>
+                                        </div>
+                                        <div class="col-10">
+                                            <h6 class="mb-1">
+                                                <strong>Detected: @lastDetectionResult.DetectedEmotion.ToUpper()</strong>
+                                                <span class="badge bg-success ms-2">@((int)(lastDetectionResult.Confidence * 100))% confidence</span>
+                                            </h6>
+                                            <p class="mb-2">@lastDetectionResult.Message</p>
+                                            <button class="btn btn-sm btn-primary" @onclick="() => AcceptSuggestion(lastDetectionResult.SuggestedMood)">
+                                                Use This Mood
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning">
+                                    <span>⚠️</span> @lastDetectionResult.Message
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .face-detection-container {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .video-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .video-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 2px dashed #007bff;
+        border-radius: 10px;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    .detection-result {
+        margin-top: 1rem;
+    }
+
+    .alert {
+        border-radius: 10px;
+    }
+</style>
+
+@code {
+    private ElementReference videoElement;
+    private ElementReference canvasElement;
+    private bool cameraInitialized = false;
+    private bool isProcessing = false;
+    private FaceDetectionResult? lastDetectionResult;
+
+    [Parameter] public EventCallback<MoodType> OnMoodSuggested { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initializeFaceDetection");
+        }
+    }
+
+    private async Task InitializeCamera()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("startCamera", videoElement);
+            cameraInitialized = true;
+            await FaceDetectionService.InitializeCameraAsync();
+            StateHasChanged();
+        }
+        catch (Exception)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Camera access failed. Please allow camera permissions.");
+        }
+    }
+
+    private async Task CaptureAndAnalyze()
+    {
+        if (!cameraInitialized) return;
+
+        isProcessing = true;
+        StateHasChanged();
+
+        try
+        {
+            var imageData = await JSRuntime.InvokeAsync<string>("captureFrame", videoElement, canvasElement);
+            
+            await Task.Delay(1500);
+            
+            lastDetectionResult = await FaceDetectionService.DetectFaceAndEmotionAsync(imageData);
+        }
+        catch (Exception)
+        {
+            lastDetectionResult = new FaceDetectionResult
+            {
+                FaceDetected = false,
+                Message = "Analysis failed. Please try again."
+            };
+        }
+        finally
+        {
+            isProcessing = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task AcceptSuggestion(MoodType suggestedMood)
+    {
+        await OnMoodSuggested.InvokeAsync(suggestedMood);
+    }
+
+    private async Task StopCamera()
+    {
+        await JSRuntime.InvokeVoidAsync("stopCamera");
+        cameraInitialized = false;
+        lastDetectionResult = null;
+        StateHasChanged();
+    }
+}

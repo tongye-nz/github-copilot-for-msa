@@ -10,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<IMoodService, MoodService>();
+builder.Services.AddScoped<IFaceDetectionService, MockFaceDetectionService>();
 
 var app = builder.Build();
 

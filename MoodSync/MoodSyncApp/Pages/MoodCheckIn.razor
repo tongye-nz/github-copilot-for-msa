@@ -42,22 +42,50 @@
                     }
                     else
                     {
-                        <div class="mood-selection mb-4">
-                            <div class="row text-center">
-                                @foreach (var mood in Enum.GetValues<MoodType>())
-                                {
-                                    <div class="col-4 col-md-2 mb-3">
-                                        <button class="btn btn-outline-primary mood-btn @(selectedMood == mood ? "active" : "")" 
-                                                @onclick="() => SelectMood(mood)">
-                                            <div style="font-size: 2.5rem;">@mood.GetEmoji()</div>
-                                            <div class="small">@mood.GetDescription().Split('/')[0]</div>
-                                        </button>
-                                    </div>
-                                }
+                        <!-- Face Detection Option -->
+                        <div class="mb-4">
+                            <div class="text-center mb-3">
+                                <h5>Choose Your Method</h5>
+                                <div class="btn-group" role="group">
+                                    <button type="button" 
+                                            class="btn @(useFaceDetection ? "btn-primary" : "btn-outline-primary")"
+                                            @onclick="() => ToggleDetectionMethod(true)">
+                                        🤖 AI Detection
+                                    </button>
+                                    <button type="button" 
+                                            class="btn @(!useFaceDetection ? "btn-primary" : "btn-outline-primary")"
+                                            @onclick="() => ToggleDetectionMethod(false)">
+                                        🎭 Manual Selection
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        @if (selectedMood != MoodType.Neutral)
+                        @if (useFaceDetection)
+                        {
+                            <!-- Face Detection Component -->
+                            <FaceDetectionComponent OnMoodSuggested="OnMoodSuggested" />
+                        }
+                        else
+                        {
+                            <!-- Manual Mood Selection -->
+                            <div class="mood-selection mb-4">
+                                <div class="row text-center">
+                                    @foreach (var mood in Enum.GetValues<MoodType>())
+                                    {
+                                        <div class="col-4 col-md-2 mb-3">
+                                            <button class="btn btn-outline-primary mood-btn @(selectedMood == mood ? "active" : "")" 
+                                                    @onclick="() => SelectMood(mood)">
+                                                <div style="font-size: 2.5rem;">@mood.GetEmoji()</div>
+                                                <div class="small">@mood.GetDescription().Split('/')[0]</div>
+                                            </button>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        @if (selectedMood != MoodType.Neutral || !string.IsNullOrEmpty(moodNote))
                         {
                             <div class="mb-4">
                                 <label class="form-label">
@@ -131,6 +159,7 @@
     private string moodNote = "";
     private bool isSubmitting = false;
     private bool isSubmitted = false;
+    private bool useFaceDetection = false;
     private MoodEntry? existingMood;
 
     protected override async Task OnInitializedAsync()
@@ -141,6 +170,25 @@
             selectedMood = existingMood.MoodValue;
             moodNote = existingMood.Note ?? "";
         }
+    }
+
+    private void ToggleDetectionMethod(bool useFace)
+    {
+        useFaceDetection = useFace;
+        if (!useFace)
+        {
+            // Reset to neutral when switching to manual
+            selectedMood = MoodType.Neutral;
+            selectedMoodText = "";
+        }
+        StateHasChanged();
+    }
+
+    private void OnMoodSuggested(MoodType suggestedMood)
+    {
+        selectedMood = suggestedMood;
+        selectedMoodText = suggestedMood.GetDescription();
+        StateHasChanged();
     }
 
     private void SelectMood(MoodType mood)
