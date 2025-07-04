@@ -52,9 +52,9 @@ The key to using AI to create production ready applications is to provide ground
    - Discusss your idea with `mentor` chat mode and refine it, including deciding on the technology stack
 
 3. **Prompt Files** (20 mins) - 📖 [**Detailed Instructions**](workshop-step-3-prompt-files.md)
-   - Create your app specfication with the `/create_spec` custom prompt file
-   - Create your implementation plan using a custom prompt file `/create_plan`.
-   - Run a last review of your plan and specification with the `mentor` chat mode
+   - Create your app specfication with the `/create_specification` custom prompt file
+   - Create your implementation plan using a custom prompt file `/create_implementation_plan`.
+   - Run a last review of your plan and specification with the `principal_software_engineer` chat mode
 
 4. **Build your application** (25 mins) - 📖 [**Detailed Instructions**](workshop-step-4-build-your-application.md)
    - Use the `#new` Agent tool to scaffold your application

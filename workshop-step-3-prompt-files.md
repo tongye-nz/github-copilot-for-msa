@@ -81,7 +81,7 @@ You can also create your own prompt files by creating a `*.prompt.md` markdown f
 **Engage Principal Software Engineer for comprehensive review:**
 
 1. Open GitHub Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
-1. Select the **Agent** drop down and choose `Principal Software Engineer`.
+1. Select the **Agent** drop down and choose `principal_software_engineer`.
 1. Enter the following prompt (make sure to correct the file names to match your generated files):
 
     ```text
